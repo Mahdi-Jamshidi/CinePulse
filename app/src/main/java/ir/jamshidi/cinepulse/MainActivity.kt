@@ -13,34 +13,37 @@ import androidx.compose.ui.tooling.preview.Preview
 import ir.jamshidi.cinepulse.ui.theme.CinePulseTheme
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            CinePulseTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContent {
+      CinePulseTheme {
+        // A surface container using the 'background' color from the theme
+        Surface(
+          modifier = Modifier.fillMaxSize(),
+          color = MaterialTheme.colorScheme.background,
+        ) {
+          Greeting("Android")
         }
+      }
     }
+  }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Greeting(
+  name: String,
+  modifier: Modifier = Modifier,
+) {
+  Text(
+    text = "Hello $name!",
+    modifier = modifier,
+  )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    CinePulseTheme {
-        Greeting("Android")
-    }
+  CinePulseTheme {
+    Greeting("Android")
+  }
 }
