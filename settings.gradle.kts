@@ -21,4 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "CinePulse"
 include(":app")
- 
+include(":data:model")
+include(":data:network")
+include(":data:api:tmdb")
+include(":data:tmdb-movies")
+include(":domain:tmdb-movies")
+include(":feature:movie-detail")

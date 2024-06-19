@@ -29,6 +29,8 @@ class MainActivity : ComponentActivity() {
   }
 }
 
+const val APIKey = "0bd8ab8a071e48254bbb2d425cfb249b"
+const val APIReadAccessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYmQ4YWI4YTA3MWU0ODI1NGJiYjJkNDI1Y2ZiMjQ5YiIsInN1YiI6IjY2NTlmZjc3ZjZmZmU5NjFiNjcxNjE5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5J9AsVr4lINP2Dw8rWiVfa1eGtVfTS_34XIrjYCC-ZM"
 @Composable
 fun Greeting(
   name: String,
