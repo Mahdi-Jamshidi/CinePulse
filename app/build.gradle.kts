@@ -2,6 +2,8 @@ plugins {
   alias(libs.plugins.androidApplication)
   alias(libs.plugins.jetbrainsKotlinAndroid)
   id("com.diffplug.spotless") version "6.25.0"
+  id("kotlin-kapt")
+  alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -21,6 +23,11 @@ android {
     }
   }
 
+  // Allow references to generated code
+  kapt {
+    correctErrorTypes = true
+  }
+
   buildTypes {
     release {
       isMinifyEnabled = false
@@ -31,11 +38,11 @@ android {
     }
   }
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
   }
   kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "17"
   }
   buildFeatures {
     compose = true
@@ -52,6 +59,8 @@ android {
 
 dependencies {
 
+  implementation(project(":feature:movie-detail"))
+
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.activity.compose)
@@ -60,6 +69,12 @@ dependencies {
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.ui.tooling.preview)
   implementation(libs.androidx.material3)
+
+  // hilt
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.android.compiler)
+  implementation(libs.hilt.navigation.compose)
+
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)

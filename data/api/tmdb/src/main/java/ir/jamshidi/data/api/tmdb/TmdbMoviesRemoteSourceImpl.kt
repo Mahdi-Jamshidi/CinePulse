@@ -2,8 +2,9 @@ package ir.jamshidi.data.api.tmdb
 
 import ir.jamshidi.data.model.VideoThumbnail
 import ir.jamshidi.data.network.TmdbMoviesService
+import javax.inject.Inject
 
-internal class TmdbMoviesMoviesRemoteSourceImpl(
+internal class TmdbMoviesRemoteSourceImpl @Inject constructor(
   private val tmdbMoviesService: TmdbMoviesService
 ) : TmdbMoviesRemoteSource {
 
