@@ -11,4 +11,8 @@ internal class TmdbMoviesRemoteSourceImpl @Inject constructor(
 
   override suspend fun getMovieDetails(movieId: Int): VideoDetail =
     tmdbMoviesService.getMovieDetails(movieId).toVideoDetail()
+
+  override suspend fun getTrendingMovies(): List<VideoThumbnail> =
+    tmdbMoviesService.getTrendingMovies().results?.map { it.toVideoThumbnail() } ?: emptyList()
+
 }

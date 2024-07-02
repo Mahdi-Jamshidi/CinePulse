@@ -60,6 +60,7 @@ android {
 dependencies {
 
   implementation(project(":feature:movie-detail"))
+  implementation(project(":feature:home"))
 
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -74,6 +75,9 @@ dependencies {
   implementation(libs.hilt.android)
   kapt(libs.hilt.android.compiler)
   implementation(libs.hilt.navigation.compose)
+
+  //Navigation
+  implementation(libs.androidx.navigation.compose)
 
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)

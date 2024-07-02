@@ -10,7 +10,5 @@ import dagger.hilt.components.SingletonComponent
 internal abstract class TmdbMoviesModule {
 
   @Binds
-  abstract fun bindTmdbMovieRepository(
-    impl: TmdbMovieRepositoryImpl,
-  ): TmdbMovieRepository
+  abstract fun bindTmdbMovieRepository(impl: TmdbMovieRepositoryImpl): TmdbMovieRepository
 }

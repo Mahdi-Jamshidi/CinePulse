@@ -13,4 +13,9 @@ internal abstract class TmdbMoviesUseCaseModule {
   abstract fun bindGetMovieDetailsUseCase(
     impl: GetMovieDetailsUseCaseImpl
   ): GetMovieDetailsUseCase
+
+  @Binds
+  abstract fun bindGetTrendingMoviesUseCase(
+    impl: GetTrendingMoviesUseCaseImpl
+  ): GetTrendingMoviesUseCase
 }
