@@ -1,8 +1,8 @@
 package ir.jamshidi.data.tmdb.movies
 
-import ir.jamshidi.data.model.VideoThumbnail
+import ir.jamshidi.data.model.VideoDetail
 
 interface TmdbMovieRepository {
 
-  suspend fun getMovieDetails(movieId: Int): VideoThumbnail
+  suspend fun getMovieDetails(movieId: Int): VideoDetail
 }
