@@ -61,6 +61,7 @@ dependencies {
 
   implementation(project(":feature:movie-detail"))
   implementation(project(":feature:home"))
+  implementation(project(":feature:player"))
 
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)

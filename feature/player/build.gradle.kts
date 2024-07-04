@@ -1,8 +1,6 @@
 plugins {
   alias(libs.plugins.androidLibrary)
   alias(libs.plugins.jetbrainsKotlinAndroid)
-  kotlin("kapt")
-  alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -28,8 +26,8 @@ android {
     release {
       isMinifyEnabled = false
       proguardFiles(
-          getDefaultProguardFile("proguard-android-optimize.txt"),
-          "proguard-rules.pro",
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro",
       )
     }
   }
@@ -44,9 +42,11 @@ android {
 
 dependencies {
 
-  implementation(project(":domain:tmdb-movies"))
   implementation(project(":data:model"))
-  implementation(project(":domain:stream"))
+
+  implementation(libs.exoplayer)
+  implementation(libs.exoplayer.ui)
+  implementation(libs.exoplayer.hls)
 
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.appcompat)
@@ -57,16 +57,6 @@ dependencies {
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.ui.tooling.preview)
   implementation(libs.androidx.material3)
-
-  implementation(libs.lifecycle.viewmodel.compose)
-  implementation(libs.lifecycle.runtime.compose)
-
-  //hilt
-  implementation(libs.hilt.android)
-  kapt(libs.hilt.android.compiler)
-
-  // Coil
-  implementation(libs.coil)
 
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)

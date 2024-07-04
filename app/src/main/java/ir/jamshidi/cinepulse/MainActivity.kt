@@ -1,5 +1,6 @@
 package ir.jamshidi.cinepulse
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import dagger.hilt.android.AndroidEntryPoint
 import ir.eitaa.feature.home.HomeScreen
+import ir.eitaa.feature.player.VideoPlayer
 import ir.jamshidi.cinepulse.ui.theme.CinePulseTheme
 import ir.jamshidi.feature.movie.detail.MovieDetailScreen
 import ir.jamshidi.feature.movie.detail.MovieDetailViewModel
@@ -51,7 +53,26 @@ class MainActivity : ComponentActivity() {
               route = "detail/{movie_id}",
               arguments = listOf(navArgument("movie_id") { type = NavType.IntType })
             ) {
-              MovieDetailScreen(viewModel = hiltViewModel())
+              MovieDetailScreen(
+                viewModel = hiltViewModel(),
+                  onStreamReady = { streamUrl ->
+                    val encoded = Uri.encode(streamUrl)
+                    navController.navigate("player/$encoded")
+                  }
+                )
+            }
+
+            composable(
+              route = "player/{stream_url}",
+              arguments = listOf(
+                navArgument("stream_url") {
+                  type = NavType.StringType
+                }
+              )
+            ) { backStackEntry ->
+              val streamUrl = backStackEntry.arguments?.getString("stream_url")
+              val decoded = Uri.decode(streamUrl)
+              VideoPlayer(uri = Uri.parse(decoded))
             }
           }
         }
