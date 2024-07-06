@@ -7,5 +7,6 @@ data class MovieDetailState(
   val isLoading: Boolean = false,
   val videoDetail: VideoDetail? = null,
   val isStreamLoading: Boolean = false,
-  val streamInfo: StreamInfo? = null
+  val streamInfo: StreamInfo? = null,
+  val message: String? = null
 )

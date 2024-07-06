@@ -1,5 +1,7 @@
 package ir.jamshidi.data.network
 
+import ir.jamshidi.data.network.adapter.NetworkCallAdapterFactory
+import ir.jamshidi.data.network.adapter.NetworkResponse
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import retrofit2.Retrofit
@@ -14,7 +16,7 @@ interface TmdbMoviesService {
   suspend fun getMovieDetails(
     @Path("movie_id") movieId: Int,
     @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
-  ): TmdbMovieDetailsResponse
+  ): NetworkResponse<TmdbMovieDetailsResponse, TmdbErrorResponse>
 
   @GET("trending/movie/{time_window}")
   suspend fun getTrendingMovies(
@@ -31,9 +33,10 @@ suspend fun main(){
     .addConverterFactory(
       json.asConverterFactory(MediaType.get("application/json"))
     )
+    .addCallAdapterFactory(NetworkCallAdapterFactory())
     .build()
 
   val tmdbMoviesService = retrofit.create(TmdbMoviesService::class.java)
-  val result = tmdbMoviesService.getTrendingMovies()
+  val result = tmdbMoviesService.getMovieDetails(550)
   println(result)
 }
